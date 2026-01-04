@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: staging
+    database: "praxis-zoo-479519-c0"
+    schema: "ny_taxi_rides"
+
+    tables:
+      - name: external_green_tripdata
+      - name: external_yellow_tripdata
