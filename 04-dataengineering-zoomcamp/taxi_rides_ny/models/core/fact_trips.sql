@@ -4,20 +4,20 @@
     )
 }}
 
-with external_green_tripdata as (
+with green_tripdata as (
     select * ,
     'Green' as service_type
     from {{ ref("stg_green_tripdata")}}
 ),
-external_yellow_tripdata as (
+yellow_tripdata as (
     select * ,
     'Yellow' as service_type
     from {{ ref("stg_yellow_tripdata")}}
 ),
 trips_unioned as (
-    select * from external_green_tripdata
+    select * from green_tripdata
     union all
-    select * from external_yellow_tripdata
+    select * from yellow_tripdata
 ),
 dim_zones as (
     select * from {{ ref('dim_zones')}}

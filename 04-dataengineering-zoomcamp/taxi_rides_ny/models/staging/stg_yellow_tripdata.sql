@@ -4,7 +4,7 @@ with tripdata as
 (
   select *,
     row_number() over(partition by cast(vendorid as int64), cast(tpep_pickup_datetime as timestamp)) as rn
-  from {{ source('staging','external_yellow_tripdata') }}
+  from {{ source('staging','yellow_tripdata') }}
   where vendorid is not null 
 )
 select
